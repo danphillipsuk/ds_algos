@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luhns Algorithm</title>
+</head>
+<body>
+
+  <label for = "num">Enter your digits:</label>
+  <input type+"text" id="num">
+  
+
+  <script>
+
+    const num = '4444';
+
+    function luhnsArray(num) {
+
+      numb = []; // inititalise empty array to store result
+      // define whether input number is odd or even
+      let cont = 0;
+
+      // determine length for modulo
+      if (num.length % 2 === 1) {
+        cont = 1;
+      } else {
+        cont = 0;
+      }
+
+
+      for (let i = num.length-1; i > -1; i--) {
+        
+        if (i % 2 === cont) {
+          let test = num[i];   
+          let dig =parseInt(test); // convert string to number
+          dig += dig; // double the number
+          if (dig > 9) {
+            let sum = dig % 10;
+            numb.push(1 + sum)
+          } else { 
+            numb.push(dig)
+          }
+        }
+      else {
+        let test = num[i];   
+        let dig =parseInt(test); // convert string to number
+        numb.push(dig)
+      }     
+    }
+      return numb;
+    }
+
+
+    let test = luhnsArray(num);
+
+    console.log(test);
+
+    let luhns = test.reduce(function(a, b) {
+      return a+b;
+    });
+
+    console.log(luhns%10)
+
+    
+
+  
+  </script>
+</body>
+
+</html>
